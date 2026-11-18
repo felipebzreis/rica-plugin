@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "rica": {
+      "type": "http",
+      "url": "https://mcp.rica.com.br/mcp"
+    }
+  }
+}

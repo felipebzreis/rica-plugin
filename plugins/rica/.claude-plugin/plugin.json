@@ -1,0 +1,23 @@
+{
+  "name": "rica",
+  "displayName": "Rica",
+  "version": "1.0.0",
+  "description": "Organize suas finanças com a Rica pelo Claude: veja para onde vai o dinheiro, registre gastos, conecte seus bancos pelo Open Finance e acompanhe objetivos, metas e hábitos, com login na Rica.",
+  "author": {
+    "name": "Social Rica",
+    "email": "contato@socialrica.com.br",
+    "url": "https://rica.com.br"
+  },
+  "homepage": "https://base.rica.com.br/plataforma/mcp",
+  "privacyPolicyUrl": "https://socialrica.com.br/politicadeprivacidade",
+  "repository": "https://github.com/felipebzreis/rica-plugin",
+  "license": "MIT",
+  "keywords": [
+    "rica",
+    "finanças pessoais",
+    "organização financeira",
+    "open finance",
+    "orçamento",
+    "metas"
+  ]
+}

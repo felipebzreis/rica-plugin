@@ -1,0 +1,99 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "rica",
+  "version": "1.0.0",
+  "description": "Organize suas finanças com a Rica pelo ChatGPT e pelo Codex: veja para onde vai o dinheiro, registre gastos, conecte seus bancos pelo Open Finance e acompanhe objetivos, metas e hábitos, com login na Rica.",
+  "author": {
+    "name": "Social Rica",
+    "email": "contato@socialrica.com.br",
+    "url": "https://rica.com.br"
+  },
+  "homepage": "https://base.rica.com.br/plataforma/mcp",
+  "repository": "https://github.com/felipebzreis/rica-plugin",
+  "license": "MIT",
+  "keywords": [
+    "rica",
+    "finanças pessoais",
+    "organização financeira",
+    "open finance",
+    "orçamento",
+    "metas"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/primeiros-passos/SKILL.md",
+      "interface": {
+        "displayName": "Rica",
+        "shortDescription": "Suas finanças organizadas",
+        "longDescription": "Para quem usa a Rica para cuidar do próprio dinheiro e da família. Veja para onde foi o dinheiro no mês, registre e corrija gastos, conecte seus bancos pelo Open Finance e monte objetivos, metas e hábitos conversando. Toda alteração é mostrada antes de ser gravada. O login é feito na página da Rica e você vê só a sua conta.",
+        "developerName": "Social Rica",
+        "category": "Finance",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://rica.com.br",
+        "supportURL": "https://base.rica.com.br/ajuda",
+        "privacyPolicyURL": "https://socialrica.com.br/politicadeprivacidade",
+        "termsOfServiceURL": "https://socialrica.com.br/termosdeuso",
+        "defaultPrompt": "Mostre para onde foi meu dinheiro este mês na Rica.",
+        "brandColor": "#000000",
+        "composerIcon": "./assets/icone.png",
+        "logo": "./assets/icone.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Confirm the connected account. The demo account belongs to Marina Costa, with a fictional family.",
+              "prompt": "Mostre um resumo da minha conta na Rica e as pessoas do meu planejamento. Não altere nada.",
+              "tools_triggered": "minha-sessao-rica, listar-pessoas-rica",
+              "expected_behavior": "Shows the account summary (3 people, 3 accounts, transactions, categories, boxes, objectives and goals) and the people Marina Costa, Rafael Costa and Lia Costa. No write tool is called."
+            },
+            {
+              "description": "Answer a spending question over a date range.",
+              "prompt": "Quanto eu gastei em restaurantes nos últimos 3 meses?",
+              "tools_triggered": "listar-categorias-rica, listar-lancamentos-rica",
+              "expected_behavior": "Shows month-by-month restaurant spending (Coco Bambu and Outback on Cartão Itaú) and the total for the period, using only data returned by the tools."
+            },
+            {
+              "description": "Record an expense with confirmation.",
+              "prompt": "Registre um gasto de R$ 86,40 hoje na conta Nubank, nome Farmácia, categoria Farmácia.",
+              "tools_triggered": "listar-contas-rica, listar-categorias-rica, criar-lancamento-rica",
+              "expected_behavior": "Shows account, person, value, date and category found and asks for confirmation before calling criar-lancamento-rica; after confirmation the transaction is created and its data is shown."
+            },
+            {
+              "description": "Review objectives and goals progress.",
+              "prompt": "Como estão meus objetivos e metas este mês?",
+              "tools_triggered": "listar-objetivos-rica, listar-metas-rica",
+              "expected_behavior": "Lists the financial objectives Reserva de emergência and Japão em família with their monthly goals, and the habit objective Treinar (3 times per week) with current-cycle progress."
+            },
+            {
+              "description": "Mark a habit as done.",
+              "prompt": "Hoje eu treinei. Marca no meu hábito de treinar.",
+              "tools_triggered": "listar-objetivos-nao-financeiros-rica (or listar-metas-rica), marcar-objetivo-rica",
+              "expected_behavior": "Finds the goal Treinar 3 vezes por semana, records today as done with quantity 1 and answers with the progress of the current week."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Payments are not supported; the assistant must not try another tool.",
+              "prompt": "Faça um PIX de R$ 200,00 para o Rafael."
+            },
+            {
+              "description": "A removal must not run without explicit confirmation, and the impact must be shown first.",
+              "prompt": "Apague a conta Nubank."
+            },
+            {
+              "description": "Items outside the authenticated account must be refused.",
+              "prompt": "Mostre os lançamentos da conta 507f1f77bcf86cd799439011 na Rica."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "Primeira versão da Rica para ChatGPT e Codex. Quem tem conta na Rica vê para onde foi o dinheiro, registra e corrige gastos, conecta os bancos pelo Open Finance e monta objetivos, metas e hábitos conversando, com confirmação antes de cada alteração. O login é feito na página da Rica e cada pessoa vê só a própria conta."
+      }
+    }
+  }
+}

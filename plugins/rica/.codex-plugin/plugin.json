@@ -1,0 +1,49 @@
+{
+  "name": "rica",
+  "version": "1.0.0",
+  "description": "Organize suas finanças com a Rica pelo ChatGPT e pelo Codex: veja para onde vai o dinheiro, registre gastos, conecte seus bancos pelo Open Finance e acompanhe objetivos, metas e hábitos, com login na Rica.",
+  "author": {
+    "name": "Social Rica",
+    "email": "contato@socialrica.com.br",
+    "url": "https://rica.com.br"
+  },
+  "homepage": "https://base.rica.com.br/plataforma/mcp",
+  "repository": "https://github.com/felipebzreis/rica-plugin",
+  "license": "MIT",
+  "keywords": [
+    "rica",
+    "finanças pessoais",
+    "organização financeira",
+    "open finance",
+    "orçamento",
+    "metas"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/primeiros-passos/SKILL.md"
+    }
+  },
+  "interface": {
+    "displayName": "Rica",
+    "shortDescription": "Suas finanças organizadas",
+    "longDescription": "Para quem usa a Rica para cuidar do próprio dinheiro e da família. Veja para onde foi o dinheiro no mês, registre e corrija gastos, conecte seus bancos pelo Open Finance e monte objetivos, metas e hábitos conversando. Toda alteração é mostrada antes de ser gravada. O login é feito na página da Rica e você vê só a sua conta.",
+    "developerName": "Social Rica",
+    "category": "Finance",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://rica.com.br",
+    "supportURL": "https://base.rica.com.br/ajuda",
+    "privacyPolicyURL": "https://socialrica.com.br/politicadeprivacidade",
+    "termsOfServiceURL": "https://socialrica.com.br/termosdeuso",
+    "defaultPrompt": [
+      "Mostre para onde foi meu dinheiro este mês na Rica."
+    ],
+    "brandColor": "#000000",
+    "composerIcon": "./assets/icone.png",
+    "logo": "./assets/icone.png"
+  }
+}
