@@ -25,7 +25,7 @@ Nunca peça senha, token ou código do banco.
 
 ## Conectar a B3
 
-`listar-autorizacoes-b3-rica` mostra as autorizações. `gerar-link-b3-rica` (com `pessoaId`, `projetoId` e CPF) gera o link de consentimento da B3. Depois que a pessoa autorizar, `consultar-autorizacao-b3-rica` confirma e atualiza as posições.
+`listar-autorizacoes-b3-rica` mostra as autorizações. `gerar-link-b3-rica` (com `pessoaId` e `projetoId`) gera o link de consentimento da B3 usando o CPF do cadastro da pessoa; se faltar, a pessoa cadastra o CPF no app da Rica. Nunca peça o CPF na conversa. Depois que a pessoa autorizar, `consultar-autorizacao-b3-rica` confirma e atualiza as posições.
 
 ## Cadastrar à mão
 
